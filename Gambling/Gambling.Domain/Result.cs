@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Gambling.Domain
 {
-    public class Result
+    public partial class Result
     {
       
         

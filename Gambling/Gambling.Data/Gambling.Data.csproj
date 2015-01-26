@@ -50,7 +50,10 @@
     <Compile Include="Configurations\RatConfiguration.cs" />
     <Compile Include="Configurations\ResultConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
+    <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="GamblingContext.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

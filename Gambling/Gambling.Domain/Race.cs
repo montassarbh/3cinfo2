@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gambling.Domain
 {
-   public class Race
+   public partial class Race
     {
        [Key]
         public int Id { get; set; }

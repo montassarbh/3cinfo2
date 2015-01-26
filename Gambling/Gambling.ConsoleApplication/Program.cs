@@ -17,6 +17,8 @@ namespace Gambling.ConsoleApplication
             GamblingContext cxt = new GamblingContext();
             cxt.Users.Add(u);
             cxt.SaveChanges();
+            Imen i = new Imen();
+            
         }
     }
 }

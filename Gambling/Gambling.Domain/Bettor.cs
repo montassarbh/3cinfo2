@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gambling.Domain
 {
-    public class Bettor:User
+    public partial class Bettor:User
     {
         [DataType(DataType.Currency)]
         public float MoneyCash { get; set; }

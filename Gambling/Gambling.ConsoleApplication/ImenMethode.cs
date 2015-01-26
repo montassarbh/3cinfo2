@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gambling.Domain
+namespace Gambling.ConsoleApplication
 {
-    public partial class Admin:User
+    partial class Imen
     {
+        public void Manger()
+        {
 
-        public int AccessLevel { get; set; }
+
+        }
     }
+    
 }
