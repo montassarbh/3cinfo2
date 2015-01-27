@@ -12,59 +12,69 @@ namespace Gambling.Data.Infrastructure
     {
        GamblingContext dbContext;
        DbSet<T> dbSet;
-       public RepositoryBase()
+       DatabaseFactory dbFactory;
+       public RepositoryBase(DatabaseFactory db)
        {
+           dbFactory = db;
+           dbContext = dbFactory.Get();
            dbSet = dbContext.Set<T>();
        }
 
         public virtual void Add(T entity)
         {
-            throw new NotImplementedException();
+            dbSet.Add(entity);
+
         }
 
         public virtual void Delete(T entity)
         {
-            throw new NotImplementedException();
+            dbSet.Remove(entity);
         }
 
         public virtual void Delete(System.Linq.Expressions.Expression<Func<T, bool>> where)
         {
-            throw new NotImplementedException();
+            var tobeDeleted = dbSet.Where(where);
+            foreach (T entity in tobeDeleted)
+                dbSet.Remove(entity);
+
         }
 
         public virtual void Update(T entity)
         {
-            throw new NotImplementedException();
+            dbSet.Attach(entity);
+            dbContext.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual T GetById(int id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
+            
         }
 
         public virtual T GetById(string id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
         }
 
         public virtual T GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return dbSet.Find(id);
         }
 
         public virtual ICollection<T> GetAll()
         {
-            throw new NotImplementedException();
+            return dbSet.ToList();
         }
 
         public virtual ICollection<T> GetMany(System.Linq.Expressions.Expression<Func<T, bool>> where)
         {
-            throw new NotImplementedException();
+            return dbSet.Where(where).ToList();
         }
 
         public virtual T Get(System.Linq.Expressions.Expression<Func<T, bool>> where)
         {
-            throw new NotImplementedException();
+            return dbSet.Where(where).FirstOrDefault();
         }
+
     }
 }

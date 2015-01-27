@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Gambling.Data.Contracts
 {
-    interface IRepository<T> : IDisposable where T:class
+    public interface IRepository<T> : IDisposable where T:class
     {
         void Add(T entity);
         void Delete(T entity);
