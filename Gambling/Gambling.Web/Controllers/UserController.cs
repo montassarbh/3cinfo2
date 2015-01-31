@@ -1,5 +1,4 @@
 ﻿using Gambling.Data.Infrastructure;
-using Gambling.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,52 +7,46 @@ using System.Web.Mvc;
 
 namespace Gambling.Web.Controllers
 {
-    [Authorize(Users = "Ghassen")]
-    public class RatController : Controller
+    public class UserController : Controller
     {
-
         DatabaseFactory dbFactory = null;
         UnitOfWork unitOfwork = null;
-        public RatController()
+        //
+        // GET: /User/
+        public UserController()
         {
             dbFactory = new DatabaseFactory();
             unitOfwork = new UnitOfWork(dbFactory);
-
         }
-        //
-        // GET: /Rat/
         public ActionResult Index()
         {
-
-
-            return View(unitOfwork.RatRepository.GetAll());
+            return View(unitOfwork.UserRepository.GetAll());
         }
 
         //
-        // GET: /Rat/Details/5
+        // GET: /User/Details/5
         public ActionResult Details(int id)
         {
-            return View(unitOfwork.RatRepository.GetById(id));
+            return View();
         }
 
         //
-        // GET: /Rat/Create
+        // GET: /User/Create
         public ActionResult Create()
         {
             return View();
         }
 
         //
-        // POST: /Rat/Create
+        // POST: /User/Create
         [HttpPost]
-        public ActionResult Create(Rat rat)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
-                unitOfwork.RatRepository.Add(rat);
-                unitOfwork.Commit();
-                return RedirectToAction("Index");
+                // TODO: Add insert logic here
 
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -62,22 +55,21 @@ namespace Gambling.Web.Controllers
         }
 
         //
-        // GET: /Rat/Edit/5
+        // GET: /User/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(unitOfwork.RatRepository.GetById(id));
+            return View();
         }
 
         //
-        // POST: /Rat/Edit/5
+        // POST: /User/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Rat rat)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-                unitOfwork.RatRepository.Update(rat);
-                unitOfwork.Commit();
+
                 return RedirectToAction("Index");
             }
             catch
@@ -87,22 +79,21 @@ namespace Gambling.Web.Controllers
         }
 
         //
-        // GET: /Rat/Delete/5
+        // GET: /User/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(unitOfwork.RatRepository.GetById(id));
+            return View();
         }
 
         //
-        // POST: /Rat/Delete/5
+        // POST: /User/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Rat rat)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                unitOfwork.RatRepository.Delete(unitOfwork.RatRepository.GetById(id));
-                unitOfwork.Commit();
+
                 return RedirectToAction("Index");
             }
             catch
